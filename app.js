@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const carsLeft = document.querySelectorAll('.car-left')
   const carsRight = document.querySelectorAll('.car-right')
   const timeLeft = document.querySelector('#time-left')
+  const livesLeft = document.querySelector('#lives-left')
   const result = document.querySelector('#result')
   const startBtn = document.querySelector('#button')
   const width = 9
@@ -14,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTime = 20
   let timerId
   let timerIDTwo 
-
+  let lifeLeft = 2
+  
   //move the chicken
   function movechicken(e) {
     squares[currentIndex].classList.remove('chicken')
@@ -33,8 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         break
     }
     squares[currentIndex].classList.add('chicken')
-    lose()
+    // lose()
     win()
+    life()
   }
 
   //move the cars
@@ -159,26 +162,45 @@ document.addEventListener('DOMContentLoaded', () => {
   function win() {
     if (squares[4].classList.contains('chicken')) {
       result.innerHTML = 'You WON'
-      currentTime = 20
+      currentTime = 21
      squares[currentIndex].classList.remove('chicken')
       currentIndex = 76;
       squares[currentIndex].classList.add('chicken')  
       timerId = setInterval(moveEverything, 1000)
     }
   }
-
-  //rules for chicken to lose
-  function lose() {
-    if ((currentTime === 0 ) || (squares[currentIndex].classList.contains('c1')) 
+  function life(){
+    if(((currentTime === 0 ) || (squares[currentIndex].classList.contains('c1')) 
     || (squares[currentIndex].classList.contains('l5'))
     || (squares[currentIndex].classList.contains('l4'))
-    ) {
-      result.innerHTML = 'You LOSE'
+    )){
+      lifeLeft -=1
+      currentTime = 21
       squares[currentIndex].classList.remove('chicken')
-      clearInterval(timerIdTwo)
+      currentIndex = 76;
+      squares[currentIndex].classList.add('chicken') 
+    if(lifeLeft === 0){
+      result.innerHTML = 'You LOSE'
+       squares[currentIndex].classList.remove('chicken')
+       clearInterval(timerIdTwo)
       document.removeEventListener('keyup', movechicken)
     }
+
+    }
   }
+
+  //rules for chicken to lose
+  // function lose() {
+  //   if ((currentTime === 0 ) || (squares[currentIndex].classList.contains('c1')) 
+  //   || (squares[currentIndex].classList.contains('l5'))
+  //   || (squares[currentIndex].classList.contains('l4'))
+  //   ) {
+  //     result.innerHTML = 'You LOSE'
+  //     squares[currentIndex].classList.remove('chicken')
+  //     clearInterval(timerIdTwo)
+  //     document.removeEventListener('keyup', movechicken)
+  //   }
+  // }
     
   //all the functions that move Everything
   function moveEverything() {
@@ -186,7 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
     autoMoveLogs()
     moveWithLogLeft()
     moveWithLogRight()
-    lose()
+    //lose()
+    life()
   }
 
   function timer(){
@@ -197,6 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }  
   }
+
+  
+  
 
   //to start, and pause the game
   startBtn.addEventListener('click', () => {
@@ -238,3 +264,4 @@ document.addEventListener('DOMContentLoaded', () => {
      modal.style.display = "none";
    }
 }
+
