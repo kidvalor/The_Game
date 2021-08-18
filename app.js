@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(timerId)
     clearInterval(timerIdTwo)
     squares[currentIndex].classList.remove('chicken')
-
+    document.removeEventListener('keyup', movechicken)
   }
   }
   function life(){
