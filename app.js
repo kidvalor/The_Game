@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   function life(){
+    livesLeft.textContent = lifeLeft
     if(((currentTime === 0 ) || (squares[currentIndex].classList.contains('c1')) 
     || (squares[currentIndex].classList.contains('l5'))
     || (squares[currentIndex].classList.contains('l4'))
