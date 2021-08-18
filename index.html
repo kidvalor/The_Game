@@ -1,14 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Why did the Chicken Cross the Road?</title>
 </head>
 <body>
-  <canvas id="canvas" width="570" height="540"></canvas>
-  <script src="app.js"></script>
-</body>
+
+    
+
+  
+
+  <div class="game">
+    <!-- Trigger/Open The Modal -->
+    <div style="text-align:center;">
+<button id="myBtn"style="height: 50px; width: 200px;">Rules</button>
+<button id="button" style="height: 50px; width: 200px;">Start/Pause</button>
+<button id="nextRoundButton" style="height: 50px; width: 200px;">Next Round</button>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>To Start Game press StartyPause Button and press up Arrow Key</p>
+    <br>
+    <p>Controls:</p>
+    <ul>
+      <li>Up = Up Arrow</li>
+      <li>Down = Down Arrow</li>
+      <li>Left = Left Arrow</li>
+      <li>Right = Right Arrow</li>
+    </ul>
+       <br> 
+    <p>To Win you must make it to the black square, Lose if time runs out or you run into Car/Water</p>
+    
+  </div>
+  <br>
+      <div style="text-align: right;">
+        
+    </div>
+    <br>
+</div>
+        <br>
+        <h3 class ="timer"> Seconds left: <span id="time-left">20</span></h3>
+         <br>
+      <div class="grid">
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class="ending-block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class ="block"></div>
+       <div class="log-left l1"></div>
+       <div class="log-left l2"></div>
+       <div class="log-left l3"></div>
+       <div class="log-left l4"></div>
+       <div class="log-left l5"></div>
+       <div class="log-left l1"></div>
+       <div class="log-left l2"></div>
+       <div class="log-left l3"></div>
+       <div class="log-left l4"></div>
+       <div class="log-right l5"></div>
+       <div class="log-right l1"></div>
+       <div class="log-right l2"></div>
+       <div class="log-right l3"></div>
+       <div class="log-right l4"></div>
+       <div class="log-right l5"></div>
+       <div class="log-right l1"></div>
+       <div class="log-right l2"></div>
+       <div class="log-right l3"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class="car-right c1"></div>
+       <div class="car-right c2"></div>
+       <div class="car-right c3"></div>
+       <div class="car-right c1"></div>
+       <div class="car-right c2"></div>
+       <div class="car-right c3"></div>
+       <div class="car-right c1"></div>
+       <div class="car-right c2"></div>
+       <div class="car-right c3"></div>
+       <div class="car-left c1"></div>
+       <div class="car-left c2"></div>
+       <div class="car-left c3"></div>
+       <div class="car-left c1"></div>
+       <div class="car-left c2"></div>
+       <div class="car-left c3"></div>
+       <div class="car-left c1"></div>
+       <div class="car-left c2"></div>
+       <div class="car-left c3"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class="starting-block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+       <div class= "block"></div>
+      </div>
+      <h3 id="result"></h3>
+    </div>
+    <br>
+   
+    <script src="app.js"></script>
+  </body>
 </html>

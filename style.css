@@ -1,12 +1,107 @@
+
 body{
-  background-color: yellow;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+ justify-content: center;
+ align-items: center;  
 }
 
-canvas {
+
+.grid {
+  border: 5px solid;
+  display: flex;
+  flex-wrap: wrap;
+  height: 540px;
+  width: 540px;
+}
+
+.grid div {
+  height: 60px;
+  width: 60px;
+}
+.block {
+background-color: green;
+}
+
+.frog {
+background-image: url(/images/chicken.png);
+}
+
+.ending-block {
   background-color: black;
-  border: 4px solid green
+}
+
+.starting-block {
+  background-color: green;
 }
 
 
+.c1.car-right {
+background-image: url(/images/carRight.png);
+background-color: grey;
+}
+
+.c1.car-left{
+background-image: url(/images/carLeft.png);
+background-color: grey;
+}
+
+.l1, .l2, .l3 {
+  background-color: brown;
+}
+
+.l4, .l5, .lf2, .lf3 {
+  background-color: lightblue;
+}
+
+.c2, .c3 {
+  background-color: grey;
+}
+
+h3{
+  text-align: center;
+}
+
+
+#button{
+  text-align: center; 
+}
+
+  /* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto; /* 15% from the top and centered */
+padding: 20px;
+border: 1px solid #888;
+width: 40%; /* Could be more or less, depending on screen size */
+height: 50%;
+}
+
+/* The Close Button */
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
