@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
   const squares = document.querySelectorAll('.grid div')
@@ -6,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const carsLeft = document.querySelectorAll('.car-left')
   const carsRight = document.querySelectorAll('.car-right')
   const timeLeft = document.querySelector('#time-left')
-  const livesLeft = document.querySelector('lives-left')
   const result = document.querySelector('#result')
   const startBtn = document.querySelector('#button')
   const width = 9
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTime = 20
   let timerId
   let timerIDTwo 
-  livesLeft = 2
 
   //move the chicken
   function movechicken(e) {
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function win() {
     if (squares[4].classList.contains('chicken')) {
       result.innerHTML = 'You WON'
-      currentTime = 21
+      currentTime = 20
      squares[currentIndex].classList.remove('chicken')
       currentIndex = 76;
       squares[currentIndex].classList.add('chicken')  
