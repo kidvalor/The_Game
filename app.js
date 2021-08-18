@@ -1,67 +1,67 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const squares = document.querySelectorAll('.grid div')
-    const logsLeft = document.querySelectorAll('.log-left')
-    const logsRight = document.querySelectorAll('.log-right')
-    const carsLeft = document.querySelectorAll('.car-left')
-    const carsRight = document.querySelectorAll('.car-right')
-    const timeLeft = document.querySelector('#time-left')
-    const result = document.querySelector('#result')
-    const startBtn = document.querySelector('#button')
-    const nextRound = document.querySelector('#nextRoundButton')
-    const width = 9
-    let currentIndex = 76
-    let currentTime = 20
-    let timerId
-  
-    //move the Frog
-    function moveFrog(e) {
-        squares[currentIndex].classList.remove('frog')
-      switch(e.keyCode) {
-        case 37:
-          if(currentIndex % width !== 0) currentIndex -= 1
-          break
-        case 38:
-          if(currentIndex - width >= 0) currentIndex -= width
-          break
-        case 39:
-          if(currentIndex % width < width - 1) currentIndex += 1
-          break
-        case 40:
-          if (currentIndex + width < width * width) currentIndex += width
-          break
-      }
-      squares[currentIndex].classList.add('frog')
-      lose()
-      win()
-    }
-  
-    //move the cars
-    function autoMoveCars() {
-      carsLeft.forEach(carLeft => moveCarLeft(carLeft))
-      carsRight.forEach(carRight => moveCarRight(carRight))
-    }
-  
-    //move the car left on a time loop
-    function moveCarLeft(carLeft) {
-      switch (true) {
-        case carLeft.classList.contains('c1'):
-        carLeft.classList.remove('c1')
-        carLeft.classList.add('c2')
+  const squares = document.querySelectorAll('.grid div')
+  const logsLeft = document.querySelectorAll('.log-left')
+  const logsRight = document.querySelectorAll('.log-right')
+  const carsLeft = document.querySelectorAll('.car-left')
+  const carsRight = document.querySelectorAll('.car-right')
+  const timeLeft = document.querySelector('#time-left')
+  const result = document.querySelector('#result')
+  const startBtn = document.querySelector('#button')
+  const width = 9
+  let currentIndex = 76
+  let currentTime = 20
+  let timerId
+  let timerIDTwo 
+
+  //move the chicken
+  function movechicken(e) {
+    squares[currentIndex].classList.remove('chicken')
+    switch(e.keyCode) {
+      case 37:
+        if(currentIndex % width !== 0) currentIndex -= 1
         break
-        case carLeft.classList.contains('c2'):
-        carLeft.classList.remove('c2')
-        carLeft.classList.add('c3')
+      case 38:
+        if(currentIndex - width >= 0) currentIndex -= width
         break
-        case carLeft.classList.contains('c3'):
-        carLeft.classList.remove('c3')
-        carLeft.classList.add('c1')
+      case 39:
+        if(currentIndex % width < width - 1) currentIndex += 1
         break
-      }
+      case 40:
+        if (currentIndex + width < width * width) currentIndex += width
+        break
     }
-  
-   //move the car right on a time loop
-   function moveCarRight(carRight) {
+    squares[currentIndex].classList.add('chicken')
+    lose()
+    win()
+  }
+
+  //move the cars
+  function autoMoveCars() {
+    carsLeft.forEach(carLeft => moveCarLeft(carLeft))
+    carsRight.forEach(carRight => moveCarRight(carRight))
+  }
+
+  //move the car left on a time loop
+  function moveCarLeft(carLeft) {
+    switch (true) {
+      case carLeft.classList.contains('c1'):
+      carLeft.classList.remove('c1')
+      carLeft.classList.add('c2')
+      break
+      case carLeft.classList.contains('c2'):
+      carLeft.classList.remove('c2')
+      carLeft.classList.add('c3')
+      break
+      case carLeft.classList.contains('c3'):
+      carLeft.classList.remove('c3')
+      carLeft.classList.add('c1')
+      break
+    }
+  }
+
+  //move the car right on a time loop
+  function moveCarRight(carRight) {
     switch (true) {
       case carRight.classList.contains('c1'):
       carRight.classList.remove('c1')
@@ -136,68 +136,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  //move the frog when its on the log moving left
+  //move the chicken when its on the log moving left
   function moveWithLogLeft() {
     if (currentIndex >= 27 && currentIndex < 35) {
-      squares[currentIndex].classList.remove('frog')
+      squares[currentIndex].classList.remove('chicken')
       currentIndex += 1
-      squares[currentIndex].classList.add('frog')
+      squares[currentIndex].classList.add('chicken')
     }
   }
 
-  //move the frog when its on the log moving right
+  //move the chicken when its on the log moving right
   function moveWithLogRight() {
     if (currentIndex > 18 && currentIndex <= 26) {
-      squares[currentIndex].classList.remove('frog')
+      squares[currentIndex].classList.remove('chicken')
       currentIndex -= 1
-      squares[currentIndex].classList.add('frog')
+      squares[currentIndex].classList.add('chicken')
     }
   }
 
-  //rules for frog to win
+  //rules for next round
   function win() {
-    if (squares[4].classList.contains('frog')) {
+    if (squares[4].classList.contains('chicken')) {
       result.innerHTML = 'You WON'
-      squares[currentIndex].classList.remove('frog')
-      clearInterval(timerId)
+      currentTime = 20
+     squares[currentIndex].classList.remove('chicken')
+      currentIndex = 76;
+      squares[currentIndex].classList.add('chicken')  
+      timerId = setInterval(moveEverything, 1000)
     }
-    
   }
 
-//function for next round 
-
-nextRound.addEventListener('click', () => {
-  currentIndex = 76
-  width = 9
-  currentTime = 20
-  timerId = setInterval(movePieces, 1000)
-  document.addEventListener('keyup', moveFrog)
-     
-  
-  
-})
-  //rules for frog to lose
+  //rules for chicken to lose
   function lose() {
     if ((currentTime === 0 ) || (squares[currentIndex].classList.contains('c1')) 
     || (squares[currentIndex].classList.contains('l5'))
     || (squares[currentIndex].classList.contains('l4'))
     ) {
       result.innerHTML = 'You LOSE'
-      squares[currentIndex].classList.remove('frog')
-      clearInterval(timerId)
-      document.removeEventListener('keyup', moveFrog)
+      squares[currentIndex].classList.remove('chicken')
+      clearInterval(timerIdTwo)
+      document.removeEventListener('keyup', movechicken)
     }
   }
     
-  //all the functions that move pieces
-  function movePieces() {
-    currentTime--
-    timeLeft.textContent = currentTime
-    autoMoveCars()  
+  //all the functions that move Everything
+  function moveEverything() {
+    autoMoveCars()
     autoMoveLogs()
     moveWithLogLeft()
     moveWithLogRight()
     lose()
+  }
+
+  function timer(){
+    currentTime--
+    timeLeft.textContent = currentTime
+    if (currentTime == 0); {
+      clearInterval(timerIDTwo)
+      return;
+    }  
   }
 
   //to start, and pause the game
@@ -205,12 +202,15 @@ nextRound.addEventListener('click', () => {
     if(timerId) {
       clearInterval(timerId)
     } else {
-      timerId = setInterval(movePieces, 1000)
-      document.addEventListener('keyup', moveFrog)
+      timerId = setInterval(moveEverything, 1000)
+      timerIdTwo = setInterval(timer,1000)
+      document.addEventListener('keyup', movechicken)
     }
   })
 
 })
+
+
 
  // Get the modal
  var modal = document.getElementById("myModal");
