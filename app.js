@@ -10,12 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const livesLeft = document.querySelector('#lives-left')
   const result = document.querySelector('#result')
   const startBtn = document.querySelector('#button')
+  const roundsLeft = document.querySelector('#rounds-left')
   const width = 9
   let currentIndex = 76
   let currentTime = 20
   let timerId
   let timerIDTwo 
   let lifeLeft = 2
+  let rounDer = 3
   
   //move the chicken
   function movechicken(e) {
@@ -160,14 +162,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //rules for next round
   function win() {
+    roundsLeft.textContent = rounDer
     if (squares[4].classList.contains('chicken')) {
-      result.innerHTML = 'You WON'
+      rounDer -=1
       currentTime = 21
      squares[currentIndex].classList.remove('chicken')
       currentIndex = 76;
       squares[currentIndex].classList.add('chicken')  
       timerId = setInterval(moveEverything, 1000)
     }
+  if (rounDer === 0){
+    result.innerHTML = 'You WON'
+    clearInterval(timerId)
+    clearInterval(timerIdTwo)
+    squares[currentIndex].classList.remove('chicken')
+
+  }
   }
   function life(){
     livesLeft.textContent = lifeLeft
