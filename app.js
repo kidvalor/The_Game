@@ -1,6 +1,7 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-
+//Sets variables and function when page is loaded 
+document.addEventListener('DOMContentLoaded', () => { 
+// QuerySlectors to set divs as index
   const squares = document.querySelectorAll('.grid div')
   const logsLeft = document.querySelectorAll('.log-left')
   const logsRight = document.querySelectorAll('.log-right')
@@ -17,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let timerId
   let timerIDTwo 
   let lifeLeft = 2
-  let rounDer = 3
+  let rounDer = 1
   
   //move the chicken
   function movechicken(e) {
+    //Removes chicken from previous location after keyboard
     squares[currentIndex].classList.remove('chicken')
     switch(e.keyCode) {
       case 37:
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         break
     }
     squares[currentIndex].classList.add('chicken')
-    // lose()
+
     win()
     life()
   }
@@ -164,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function win() {
     roundsLeft.textContent = rounDer
     if (squares[4].classList.contains('chicken')) {
-      rounDer -=1
+      rounDer +=1
       currentTime = 21
      squares[currentIndex].classList.remove('chicken')
       currentIndex = 76;
@@ -199,27 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
   }
-
-  //rules for chicken to lose
-  // function lose() {
-  //   if ((currentTime === 0 ) || (squares[currentIndex].classList.contains('c1')) 
-  //   || (squares[currentIndex].classList.contains('l5'))
-  //   || (squares[currentIndex].classList.contains('l4'))
-  //   ) {
-  //     result.innerHTML = 'You LOSE'
-  //     squares[currentIndex].classList.remove('chicken')
-  //     clearInterval(timerIdTwo)
-  //     document.removeEventListener('keyup', movechicken)
-  //   }
-  // }
-    
+  
   //all the functions that move Everything
   function moveEverything() {
     autoMoveCars()
     autoMoveLogs()
     moveWithLogLeft()
     moveWithLogRight()
-    //lose()
     life()
   }
 
