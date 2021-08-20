@@ -24,7 +24,7 @@ background-color: green;
 }
 
 .chicken {
-background-image: url(/images/chicken.png);
+background-image: url(chicken.png);
 }
 
 .ending-block {
@@ -37,12 +37,12 @@ background-image: url(/images/chicken.png);
 
 
 .c1.car-right {
-background-image: url(/images/carRight.png);
+background-image: url(carRight.png);
 background-color: grey;
 }
 
 .c1.car-left{
-background-image: url(/images/carLeft.png);
+background-image: url(carLeft.png);
 background-color: grey;
 }
 

@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndex].classList.add('chicken')  
       timerId = setInterval(moveEverything, 1000)
     }
-  if (rounDer === 0){
+  if (rounDer === 4){
     result.innerHTML = 'You WON'
     clearInterval(timerId)
     clearInterval(timerIdTwo)
