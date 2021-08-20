@@ -220,9 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }  
   }
 
-  
-  
-
   //to start, and pause the game
   startBtn.addEventListener('click', () => {
     if(timerId) {
@@ -235,8 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
 })
-
-
 
  // Get the modal
  var modal = document.getElementById("myModal");
