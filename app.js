@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         break
     }
     squares[currentIndex].classList.add('chicken')
-
     win()
     life()
   }
@@ -173,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndex].classList.add('chicken')  
       timerId = setInterval(moveEverything, 1000)
     }
+  
   if (rounDer === 4){
     result.innerHTML = 'You WON'
     clearInterval(timerId)
@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     squares[currentIndex].classList.remove('chicken')
     document.removeEventListener('keyup', movechicken)
   }
+
   }
   function life(){
     livesLeft.textContent = lifeLeft
